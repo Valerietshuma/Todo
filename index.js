@@ -1,6 +1,6 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const ejs = require("ejs");
+
+import express from "express";
+
 const PORT = 3000;
 const app = express();
 
