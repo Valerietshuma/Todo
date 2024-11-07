@@ -69,14 +69,14 @@
         const incompleteButton = document.createElement('button');
         
         incompleteButton.classList.add('incomplete-btn');
-        incompleteButton.innerHTML = '<i class="fas fa-times"></i> ';
+        incompleteButton.innerHTML = '<i class="fa fa-minus-circle" aria-hidden="true"></i> ';
         incompleteButton.onclick = () => markIncomplete(todo.id);
 
         // Create Delete button
         const deleteButton = document.createElement('button');
        
         deleteButton.classList.add('delete-btn');
-        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'; 
+        deleteButton.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>'; 
         deleteButton.onclick = () => deleteTask(todo.id);
 
         // Append the buttons to the taskButtons div
