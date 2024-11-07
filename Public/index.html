@@ -13,8 +13,11 @@
     <div class="card">
       <div class="container_copy">
     <h1>To-Do List</h1>
+
+    <div class="row">
     <input type="text" id="task-input" placeholder="Add a new task" />
     <button id="add-task-btn">Add Task</button>
+    </div>
     <div class="lists">
       <ul id="todo-list"></ul>
     </div>
@@ -51,7 +54,7 @@
         // Create Complete button
         const completeButton = document.createElement('button');
         completeButton.classList.add('complete-btn');
-        completeButton.innerHTML = '<i class="fas fa-check"></i>';
+        completeButton.innerHTML = '<i class="fas fa-check"></i> ';
       
         completeButton.onclick = () => markCompleted(todo.id);
 
@@ -59,7 +62,7 @@
         const incompleteButton = document.createElement('button');
         
         incompleteButton.classList.add('incomplete-btn');
-        incompleteButton.innerHTML = '<i class="fas fa-times"></i>';
+        incompleteButton.innerHTML = '<i class="fas fa-times"></i> ';
         incompleteButton.onclick = () => markIncomplete(todo.id);
 
         // Create Delete button
