@@ -22,29 +22,39 @@ body {
   
 
 
-  input {
-    padding: 10px;
-    width: 90%; 
-    margin: 10px; 
-    border-radius: 11px;
-    border: 5px solid #ccc;
    
+  input {
+    padding: 20px;
+    width: 90%;
+    margin: 10px ;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+
   }
 
   button {
-    padding: 10px 15px;
-    background-color:#a28b8e;
-    color: white;
-    border:0px solid ;
-    border-radius: 10px;
+    padding: 10px;
+    
+    color: rgb(17, 3, 3);
+    border:5px ;
+    border-radius: 4px;
     cursor: pointer;
+
+    /*added*/
+    display: inline-flex; /* Use inline-flex to center the icon within the button */
+  justify-content: center; /* Centers icon horizontally */
+  align-items: center; /* Centers icon vertically */
+  font-size: 20px;
+    
     
   }
 
   button:hover {
-    background-color: white;
+    background-color:#b68d7d;
   }
-
+  button i {
+    font-size: 20px; /* Adjust icon size to fit the button */
+  }
   ul {
     list-style-type: none;
     padding: 0;
@@ -58,9 +68,16 @@ body {
     color: #d3ffd3;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
+
+    display: flex; /* Use flexbox for easy alignment */
+  align-items: center; /**/
    
   }
-  
+  .todo-icon {
+    width: 30px; /* Set a size for the icon */
+    height: 30px; /* Set a height for the icon */
+    margin-right: 10px; /* Add space between the icon and text */
+  }
  
   li {
     display: flex;
@@ -70,8 +87,8 @@ body {
     background-color: #fff;
     margin: 5px 0;
     border: 1px ;
-    border-radius: 10px;
-    width: 300px;
+    border-radius: 0px;
+    width: 250px;
   }
   
   li.completed {
