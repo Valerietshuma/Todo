@@ -97,7 +97,7 @@ body {
   }
   
   .delete-btn {
-    background-color: #c46b6b;
+    
     color: white;
     border: none;
     cursor: pointer;
@@ -110,7 +110,7 @@ body {
   }
   
   .complete-btn {
-    background-color: #dfb2af;
+ 
     color: white;
     border: none;
     cursor: pointer;
@@ -122,7 +122,7 @@ body {
     background-color: #03eb03;
   }
   .incomplete-btn{
-    background-color: #af7474;
+   
     color: white;
     border: none;
     cursor: pointer;

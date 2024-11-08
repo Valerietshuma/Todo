@@ -67,7 +67,7 @@ app.patch('/TodoL/:index/important', (req,res)=>{
 
 
 });
-
+//counter code
 
 const completedCounter = document.getElementById("completed-counter");
 const incompleteCounter = document.getElementById("uncompleted-counter");
