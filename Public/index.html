@@ -30,6 +30,19 @@
   </div>
     <div class="lists">
       <ul id="todo-list"></ul>
+
+
+            <!-- task list -->
+            <h2>Task List</h2>
+            <ul id="list-container"></ul>
+            <hr />
+            <!-- task list counter -->
+            <div class="counter-container">
+              <div id="task-counters">
+                Completed: <span id="completed-counter">0</span> | Uncompleted:
+                <span id="uncompleted-counter">0</span>
+              </div>
+            </div>      
   </div>
   </div>
   
@@ -40,6 +53,7 @@
     const taskInput = document.getElementById('task-input');
     const addTaskButton = document.getElementById('add-task-btn');
     const todoList = document.getElementById('todo-list');
+    
 
     // In-memory store for tasks (acting as a mock database)
     let TodoL= [];
@@ -57,8 +71,9 @@
         const taskButtons = document.createElement('div');
         taskButtons.classList.add('task-buttons');
         
-
-        // Create Complete button
+       
+    
+   // Create Complete button
         const completeButton = document.createElement('button');
         completeButton.classList.add('complete-btn');
         completeButton.innerHTML = '<i class="fas fa-check"></i> ';
@@ -69,7 +84,7 @@
         const incompleteButton = document.createElement('button');
         
         incompleteButton.classList.add('incomplete-btn');
-        incompleteButton.innerHTML = '<i class="fa fa-minus-circle" aria-hidden="true"></i> ';
+        incompleteButton.innerHTML = '<i class="fa fa-pencil-square" aria-hidden="true"></i> ';
         incompleteButton.onclick = () => markIncomplete(todo.id);
 
         // Create Delete button
@@ -90,7 +105,7 @@
         todoList.appendChild(li);
       });
     }
-
+  
     // Function to add a new task
     addTaskButton.addEventListener('click', () => {
       const taskText = taskInput.value.trim();
