@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('../images/pic4.jpg');
+    background-image: url('../images/pic3.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -93,12 +93,12 @@ body {
   
   li.completed {
     text-decoration: line-through;
-    background-color: #493e3e;
+    background-color: #744343;
   }
   
   .delete-btn {
     
-    color: white;
+    color: rgb(24, 23, 23);
     border: none;
     cursor: pointer;
     padding: 5px 10px;
@@ -111,7 +111,7 @@ body {
   
   .complete-btn {
  
-    color: white;
+    color: rgb(22, 22, 22);
     border: none;
     cursor: pointer;
     padding: 5px 10px;
@@ -139,7 +139,7 @@ body {
  }
 
 
- 
+
   .container {
     display: flex;
     flex-wrap: wrap; /* Enables wrapping */
@@ -147,12 +147,13 @@ body {
     align-items: center;
     gap: 1rem; /* Adds space between cards */
     padding: 2rem;
+    flex-direction: row;
   }
   
   .card {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
-    background:  #7a4950;
+    background:  #c4bec0e5;
     max-width: 500px; /* Ensures the card doesn’t get too wide */
     width: 100%; /* Allows flexibility for different screens */
     border-radius: 10px;
@@ -203,3 +204,24 @@ body {
     line-height: 1.45;
     color: #ffffff;
   }
+  .seccontainer {
+    display: flex;
+    flex-wrap: wrap; /* Enables wrapping */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Adds space between cards */
+    padding: 2rem;
+    flex-direction: row;
+  }
+ .cards{
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  background:  #413b3c;
+  max-width: 500px; /* Ensures the card doesn’t get too wide */
+  width: 100%; /* Allows flexibility for different screens */
+  border-radius: 10px;
+  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding: 20px;
+  height: 200px;
+ }
