@@ -28,7 +28,7 @@ body {
     width: 90%;
     margin: 10px ;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px ;
 
   }
 
@@ -39,44 +39,48 @@ body {
     border:5px ;
     border-radius: 4px;
     cursor: pointer;
+    background-color: #464646;
 
     /*added*/
-    display: inline-flex; /* Use inline-flex to center the icon within the button */
-  justify-content: center; /* Centers icon horizontally */
-  align-items: center; /* Centers icon vertically */
+  display: inline-flex; /* Use inline-flex to center the icon within the button */
+  justify-content: center; 
+  align-items: center; 
   font-size: 20px;
     
     
   }
 
   button:hover {
-    background-color:#b68d7d;
+    background-color:#ffffff;
   }
+
   button i {
     font-size: 20px; /* Adjust icon size to fit the button */
   }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   h1{
     
     font-weight: bolder;
     font-size: xx-large;
     text-decoration: solid;
-    text-shadow: #f1f1f1;
-    color: #d3ffd3;
+    text-shadow: 2px 2px#ffffff;
+    color: #413b3c !important;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
 
-    display: flex; /* Use flexbox for easy alignment */
+    display: flex; 
   align-items: center; /**/
    
   }
   .todo-icon {
-    width: 30px; /* Set a size for the icon */
-    height: 30px; /* Set a height for the icon */
-    margin-right: 10px; /* Add space between the icon and text */
+    width: 30px; 
+    height: 30px; 
+    margin-right: 10px; 
   }
  
   li {
@@ -84,7 +88,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #fff;
+    background-color: #464646;
     margin: 5px 0;
     border: 1px ;
     border-radius: 0px;
@@ -93,7 +97,7 @@ body {
   
   li.completed {
     text-decoration: line-through;
-    background-color: #744343;
+    background-color: #464646;
   }
   
   .delete-btn {
@@ -101,8 +105,9 @@ body {
     color: rgb(24, 23, 23);
     border: none;
     cursor: pointer;
-    padding: 5px 10px;
+    
     border-radius: 4px;
+    
   }
   
   .delete-btn:hover {
@@ -114,8 +119,9 @@ body {
     color: rgb(22, 22, 22);
     border: none;
     cursor: pointer;
-    padding: 5px 10px;
+    
     border-radius: 4px;
+    
   }
   
   .complete-btn:hover {
@@ -126,11 +132,12 @@ body {
     color: black;
     border: none;
     cursor: pointer;
-    padding: 5px 10px;
+    
     border-radius: 4px;
+    
   }
   .incomplete-btn:hover{
-    background-color:#e09a17 ;
+    background-color:#3b3b2a ;
   }
  .row{
   display: flex;
@@ -142,7 +149,7 @@ body {
 
   .container {
     display: flex;
-    flex-wrap: wrap; /* Enables wrapping */
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 1rem; /* Adds space between cards */
@@ -183,6 +190,8 @@ body {
     padding: 2rem;
     max-height: 500px;
     align-items: center;
+    color:white;
+    font-weight: bold;
   }
   
   h3 {
@@ -206,10 +215,10 @@ body {
   }
   .seccontainer {
     display: flex;
-    flex-wrap: wrap; /* Enables wrapping */
+    flex-wrap: wrap; 
     justify-content: center;
     align-items: center;
-    gap: 1rem; /* Adds space between cards */
+    gap: 1rem; 
     padding: 2rem;
     flex-direction: row;
   }
@@ -217,11 +226,18 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
   background:  #413b3c;
-  max-width: 500px; /* Ensures the card doesn’t get too wide */
-  width: 100%; /* Allows flexibility for different screens */
+  max-width: 500px; 
+  width: 100%; 
   border-radius: 10px;
   box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
   position: relative;
   padding: 20px;
   height: 200px;
+  
  }
+ .container_copys {
+  padding: 2rem;
+  max-height: 500px;
+  align-items: center;
+  color:white;
+}
