@@ -28,82 +28,92 @@
       <ul id="todo-list"></ul>
     </div>
   </div>
-    <div class="lists">
-      <ul id="todo-list"></ul>
+    
 
 
+          
+           
+  <div class="card">
+  <div class="container_copy">  
+                
             <!-- task list -->
-            <h2>Task List</h2>
-            <ul id="list-container"></ul>
+  <h2>Task List</h2>
+  <ul id="list-container"></ul>
             <hr />
             <!-- task list counter -->
-            <div class="counter-container">
-              <div id="task-counters">
-                Completed: <span id="completed-counter">0</span> | Uncompleted:
-                <span id="uncompleted-counter">0</span>
-              </div>
-            </div>      
+                  <div id="task-counters">
+                    Completed: <span id="completed-counter">0</span> | Uncompleted:
+                    <span id="uncompleted-counter">0</span>
+                  </div>
+                </div>  
+                </div>
+                </div>
+
   </div>
   </div>
   
   <script>
-    // JavaScript logic
-
     // Variables for DOM elements
     const taskInput = document.getElementById('task-input');
     const addTaskButton = document.getElementById('add-task-btn');
     const todoList = document.getElementById('todo-list');
-    
-
+    const completedCounter = document.getElementById("completed-counter");
+    const uncompletedCounter = document.getElementById("uncompleted-counter");
+  
     // In-memory store for tasks (acting as a mock database)
-    let TodoL= [];
-
+    let TodoL = [];
+  
+    // Function to update the task counters
+    function updateCounters() {
+      const completedTasks = TodoL.filter(todo => todo.completed).length;
+      const uncompletedTasks = TodoL.length - completedTasks;
+      completedCounter.textContent = completedTasks;
+      uncompletedCounter.textContent = uncompletedTasks;
+    }
+  
     // Function to fetch and render all tasks
     function fetchTasks() {
       todoList.innerHTML = ''; 
       TodoL.forEach(todo => {
         const li = document.createElement('li');
         li.classList.toggle('completed', todo.completed);
-
+  
         const text = document.createElement('span');
         text.textContent = todo.text;
-
+  
         const taskButtons = document.createElement('div');
         taskButtons.classList.add('task-buttons');
-        
-       
-    
-   // Create Complete button
+  
+        // Create Complete button
         const completeButton = document.createElement('button');
         completeButton.classList.add('complete-btn');
-        completeButton.innerHTML = '<i class="fas fa-check"></i> ';
-      
+        completeButton.innerHTML = '<i class="fas fa-check"></i>';
         completeButton.onclick = () => markCompleted(todo.id);
-
+  
         // Create Incomplete button
         const incompleteButton = document.createElement('button');
-        
         incompleteButton.classList.add('incomplete-btn');
-        incompleteButton.innerHTML = '<i class="fa fa-pencil-square" aria-hidden="true"></i> ';
+        incompleteButton.innerHTML = '<i class="fa fa-pencil-square" aria-hidden="true"></i>';
         incompleteButton.onclick = () => markIncomplete(todo.id);
-
+  
         // Create Delete button
         const deleteButton = document.createElement('button');
-       
         deleteButton.classList.add('delete-btn');
         deleteButton.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>'; 
         deleteButton.onclick = () => deleteTask(todo.id);
-
+  
         // Append the buttons to the taskButtons div
         taskButtons.appendChild(completeButton);
         taskButtons.appendChild(incompleteButton);
         taskButtons.appendChild(deleteButton);
-
+  
         // Append the task text and buttons to the list item
         li.appendChild(text);
         li.appendChild(taskButtons);
         todoList.appendChild(li);
       });
+      // Update counters after fetching tasks
+      updateCounters();
     }
   
     // Function to add a new task
@@ -120,7 +130,7 @@
         fetchTasks();
       }
     });
-
+  
     // Function to mark a task as completed
     function markCompleted(id) {
       const todo = TodoL.find(todo => todo.id === id);
@@ -129,7 +139,7 @@
         fetchTasks(); 
       }
     }
-
+  
     // Function to mark a task as incomplete
     function markIncomplete(id) {
       const todo = TodoL.find(todo => todo.id === id);
@@ -138,15 +148,16 @@
         fetchTasks(); 
       }
     }
-
+  
     // Function to delete a task
     function deleteTask(id) {
       TodoL = TodoL.filter(todo => todo.id !== id);
       fetchTasks(); 
     }
-
+  
     // Initialize the task list when the page loads
     fetchTasks();
   </script>
+  
 </body>
 </html>
