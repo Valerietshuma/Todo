@@ -40,12 +40,10 @@ body {
     border-radius: 4px;
     cursor: pointer;
     background-color: #464646;
-
-    /*added*/
-  display: inline-flex; /* Use inline-flex to center the icon within the button */
-  justify-content: center; 
-  align-items: center; 
-  font-size: 20px;
+    display: inline-flex; /* Use inline-flex to center the icon within the button */
+    justify-content: center; 
+    align-items: center; 
+    font-size: 20px;
     
     
   }
@@ -58,10 +56,12 @@ body {
     font-size: 20px; /* Adjust icon size to fit the button */
   }
 
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
 
   h1{
     
@@ -72,17 +72,18 @@ body {
     color: #413b3c !important;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
-
     display: flex; 
-  align-items: center; /**/
+    align-items: center; /**/
    
   }
+
   .todo-icon {
     width: 30px; 
     height: 30px; 
     margin-right: 10px; 
   }
  
+
   li {
     display: flex;
     justify-content: space-between;
@@ -102,7 +103,7 @@ body {
   
   .delete-btn {
     
-    color: rgb(24, 23, 23);
+    color: rgb(250, 19, 19);
     border: none;
     cursor: pointer;
     
@@ -111,12 +112,12 @@ body {
   }
   
   .delete-btn:hover {
-    background-color: #f71303;
+    background-color: #1d0301;
   }
   
   .complete-btn {
  
-    color: rgb(22, 22, 22);
+    color: rgb(50, 206, 3);
     border: none;
     cursor: pointer;
     
@@ -125,11 +126,11 @@ body {
   }
   
   .complete-btn:hover {
-    background-color: #03eb03;
+    background-color: #012501;
   }
   .incomplete-btn{
    
-    color: black;
+    color: rgb(240, 217, 9);
     border: none;
     cursor: pointer;
     
@@ -137,7 +138,7 @@ body {
     
   }
   .incomplete-btn:hover{
-    background-color:#3b3b2a ;
+    background-color:#535301 ;
   }
  .row{
   display: flex;
@@ -213,6 +214,7 @@ body {
     line-height: 1.45;
     color: #ffffff;
   }
+  /*second container for the counter*/
   .seccontainer {
     display: flex;
     flex-wrap: wrap; 
