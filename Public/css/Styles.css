@@ -100,7 +100,13 @@ body {
     text-decoration: line-through;
     background-color: #464646;
   }
+  .containerlist {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding-right: 5px; 
   
+  }
   .delete-btn {
     
     color: rgb(250, 19, 19);
