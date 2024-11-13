@@ -1,236 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/Styles.css">
   <title>To-Do List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f4f9;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    input {
-      padding: 10px;
-      width: 80%;
-      margin: 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      padding: 10px 15px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      background-color: #fff;
-      margin: 5px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    li.completed {
-      text-decoration: line-through;
-      background-color: #d3ffd3;
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: none;
-      background-color: #fff;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 5px;
-      width: 120px;
-    }
-
-    .dropdown-btn {
-      background-color: transparent;
-      border: none;
-      color: #4caf50;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .dropdown-btn:hover {
-      color: #45a049;
-    }
-
-    li:hover .dropdown {
-      display: block;
-    }
-
-    .delete-btn {
-      background-color: #e57373;
-      color: white;
-      border: none;
-      cursor: pointer;
-      padding: 5px 10px;
-      border-radius: 4px;
-    }
-
-    .delete-btn:hover {
-      background-color: #f44336;
-    }
-
-    .complete-btn, .incomplete-btn {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      cursor: pointer;
-      padding: 5px 10px;
-      border-radius: 4px;
-    }
-
-    .complete-btn:hover, .incomplete-btn:hover {
-      background-color: #45a049;
-    }
-
-  </style>
+  
 </head>
 <body>
   <div class="container">
-    <h1>To-Do List</h1>
-    <input type="text" id="task-input" placeholder="Add a new task" />
-    <button id="add-task-btn">Add Task</button>
-    <ul id="todo-list"></ul>
+    <div class="card">
+      <div class="container_copy">
+    <h1>
+      <img src="images/dooooL.png" alt="To-Do Icon" class="todo-icon " >
+      
+      To-Do List!
+     
+      
+    </h1>
+    
+    <div class="row">
+    <input type="text" id="task-input" placeholder="Add a new task" maxlength="20"/>
+    <button id="add-task-btn">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+    </div>
+
+    <div class="containerlist">
+    
+      <ul id="todo-list"></ul>
+    </div>
+    </div>
+  </div>
+    </div>
   </div>
 
-  <script>
-    // JavaScript logic
 
+    <div class= "seccontainer" >   
+           
+  <div class="cards">
+  <div class="container_copys">  
+                
+            <!-- task list -->
+  <h2>Task List</h2>
+  <ul id="list-container"></ul>
+            <hr />
+            
+                  <div id="task-counters">
+                    Completed: <span id="completed-counter">0</span> | Uncompleted:
+                    <span id="uncompleted-counter">0</span>
+                  </div>
+                </div>  
+                </div>
+                </div>
+
+  </div>
+  </div>
+  
+  <script>
     // Variables for DOM elements
     const taskInput = document.getElementById('task-input');
     const addTaskButton = document.getElementById('add-task-btn');
     const todoList = document.getElementById('todo-list');
-
-    // In-memory store for tasks (acting as a mock database)
-    let TodoL = [
-       
-    ];
-
+    const completedCounter = document.getElementById("completed-counter");
+    const uncompletedCounter = document.getElementById("uncompleted-counter");
+    
+    // Function to update the task counters
+    function updateCounters(TodoL) {
+      const completedTasks = TodoL.filter(todo => todo.completed).length;
+      const uncompletedTasks = TodoL.length - completedTasks;
+      completedCounter.textContent = completedTasks;
+      uncompletedCounter.textContent = uncompletedTasks;
+    }
+    
     // Function to fetch and render all tasks
-    function fetchTasks() {
+    async function fetchTasks() {
+      try {
+        const response = await fetch('/TodoL');
+        const TodoL = await response.json();
+        renderTasks(TodoL);
+        updateCounters(TodoL);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    }
+    
+    // Function to render tasks on the DOM
+    function renderTasks(TodoL) {
       todoList.innerHTML = ''; // Clear existing tasks
-      TodoL.forEach(todo => {
+      TodoL.forEach((todo, index) => {
         const li = document.createElement('li');
         li.classList.toggle('completed', todo.completed);
-
+        li.classList.toggle('important', todo.important); // Mark as important if needed
+    
         const text = document.createElement('span');
         text.textContent = todo.text;
-
-        const dropdown = document.createElement('div');
-        dropdown.classList.add('dropdown');
-
+    
+        const taskButtons = document.createElement('div');
+        taskButtons.classList.add('task-buttons');
+    
+        // Create Complete button
         const completeButton = document.createElement('button');
-        completeButton.textContent = 'Complete';
         completeButton.classList.add('complete-btn');
-        completeButton.onclick = () => markCompleted(todo.id);
-
-        const incompleteButton = document.createElement('button');
-        incompleteButton.textContent = 'Incomplete';
-        incompleteButton.classList.add('incomplete-btn');
-        incompleteButton.onclick = () => markIncomplete(todo.id);
-
+        completeButton.innerHTML = '<i class="fas fa-check"></i>';
+        completeButton.onclick = () => markCompleted(index);
+    
+        // Create Important button
+        const importantButton = document.createElement('button');
+        importantButton.classList.add('important-btn');
+        importantButton.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+        importantButton.onclick = () => markIncomplete(index);
+    
+        // Create Delete button
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
         deleteButton.classList.add('delete-btn');
-        deleteButton.onclick = () => deleteTask(todo.id);
-
-        dropdown.appendChild(completeButton);
-        dropdown.appendChild(incompleteButton);
-        dropdown.appendChild(deleteButton);
-
-        const dropdownBtn = document.createElement('button');
-        dropdownBtn.textContent = 'Actions';
-        dropdownBtn.classList.add('dropdown-btn');
-        dropdownBtn.onclick = (e) => {
-          e.stopPropagation();
-          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        };
-
+        deleteButton.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+        deleteButton.onclick = () => deleteTask(index);
+    
+        // Append the buttons to the taskButtons div
+        taskButtons.appendChild(completeButton);
+        taskButtons.appendChild(importantButton);
+        taskButtons.appendChild(deleteButton);
+    
+        // Append the task text and buttons to the list item
         li.appendChild(text);
-        li.appendChild(dropdownBtn);
-        li.appendChild(dropdown);
+        li.appendChild(taskButtons);
         todoList.appendChild(li);
       });
     }
-
+    
     // Function to add a new task
-    addTaskButton.addEventListener('click', () => {
+    addTaskButton.addEventListener('click', async () => {
       const taskText = taskInput.value.trim();
       if (taskText) {
-        const newTodo = {
-          id: TodoL.length + 1,
-          text: taskText,
-          completed: false
-        };
-        TodoL.push(newTodo);
-        taskInput.value = ''; // Clear input field
-        fetchTasks(); // Refresh task list
+        try {
+          const response = await fetch('/Todol', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ task: taskText })
+          });
+          const newTask = await response.json();
+          fetchTasks(); // Refresh the task list
+          taskInput.value = ''; // Clear the input
+        } catch (error) {
+          console.error('Error adding task:', error);
+        }
       }
     });
-
+    
     // Function to mark a task as completed
-    function markCompleted(id) {
-      const todo = TodoL.find(todo => todo.id === id);
-      if (todo) {
-        todo.completed = true;
-        fetchTasks(); // Refresh task list
+    async function markCompleted(index) {
+      try {
+        await fetch(`/TodoL/${index}/complete`, {
+          method: 'PATCH',
+        });
+        fetchTasks(); // Refresh the task list
+      } catch (error) {
+        console.error('Error marking task as completed:', error);
       }
     }
-
-    // Function to mark a task as incomplete
-    function markIncomplete(id) {
-      const todo = TodoL.find(todo => todo.id === id);
-      if (todo) {
-        todo.completed = false;
-        fetchTasks(); // Refresh task list
+    async function markIncomplete(index) {
+      try {
+        await fetch(`/TodoL/${index}/incomplete`, {
+          method: 'PATCH',
+        });
+        fetchTasks(); // Refresh the task list
+      } catch (error) {
+        console.error('Error marking task as completed:', error);
       }
     }
-
+    
+    // Function to mark a task as important
+    async function markImportant(index) {
+      try {
+        await fetch(`/TodoL/${index}/important`, {
+          method: 'PATCH',
+        });
+        fetchTasks(); // Refresh the task list
+      } catch (error) {
+        console.error('Error marking task as important:', error);
+      }
+    }
+    
     // Function to delete a task
-    function deleteTask(id) {
-      TodoL = TodoL.filter(todo => todo.id !== id);
-      fetchTasks(); // Refresh task list
+    async function deleteTask(index) {
+      try {
+        await fetch(`/TodoL/${index}`, { method: 'DELETE' });
+        fetchTasks(); // Refresh the task list
+      } catch (error) {
+        console.error('Error deleting task:', error);
+      }
     }
-
+    
     // Initialize the task list when the page loads
     fetchTasks();
-  </script>
+    
+    </script>
+    
 </body>
 </html>
