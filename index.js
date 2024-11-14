@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 
 
 // Get all tasks
-app.get('https://to-do-list-bkxb.onrender.com/TodoL', (req, res) => {
+app.get('/TodoL', (req, res) => {
   res.json(TodoL);
 });
 
