@@ -62,3 +62,13 @@ If you run into issues:
 # Prerequisites
 - Make sure you have Node.js installed on your machine. If you don't have it installed, download and install it from nodejs.org.
 
+   # Video
+  -Below is the video showcasing how the To-do list works, from being able to ad new tasks as many as you can and having a scrollbar feature,
+  mark as completed button which as the task to the counter, unmark the completed and detele. The counter is reactive to the actions that happens on added tasks.
+
+https://github.com/user-attachments/assets/88706524-de2b-4c16-90d1-4f0e4642fffa
+
+-The video was added on the readme file because I could not deploy the To-do list.
+
+
+
