@@ -4,7 +4,9 @@ const PORT = 3000;
 const app = express();
 
 let TodoL = [];
+
 app.use(express.json());
+
 app.use(express.static("public"));
 
 // Get all tasks
